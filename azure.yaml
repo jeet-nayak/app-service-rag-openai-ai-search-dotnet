@@ -1,0 +1,8 @@
+name: blazor-ai-search
+metadata:
+  template: blazor-ai-search@0.0.1-preview
+services:
+  web:
+    project: .
+    language: dotnet
+    host: appservice
