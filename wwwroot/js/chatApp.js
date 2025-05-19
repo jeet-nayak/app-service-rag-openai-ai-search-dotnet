@@ -96,6 +96,9 @@ window.showCitationPopup = function(index, citation) {
         popup.style.width = '80%';
         popup.style.maxWidth = '900px';
         
+        // Cleanse citation content to replace newlines with <br>
+        let cleansedContent = citation.content ? citation.content.replace(/\n/g, '<br>') : '';
+        
         // Create the popup with Bootstrap styling
         popup.innerHTML = `
             <div class="modal-content">
@@ -105,7 +108,7 @@ window.showCitationPopup = function(index, citation) {
                 </div>
                 <div class="modal-body">
                     ${citation.title ? `<h6>${citation.title}</h6>` : ''}
-                    ${citation.content ? `<div class="p-3 bg-light border rounded">${citation.content}</div>` : '<p class="text-muted">No content available</p>'}
+                    ${citation.content ? `<div class="p-3 bg-light border rounded" style="max-height: 350px; overflow-y: auto;">${cleansedContent}</div>` : '<p class="text-muted">No content available</p>'}
                 </div>
             </div>
         `;
